@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SoftwareHub Pro — Local Software Center</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-icon">S</div><div><b>SoftwareHub</b><span>LOCAL CENTER</span></div></div>
+    <nav>
+      <button class="nav-item active" data-view="dashboard">⌂ <span>Tổng quan</span></button>
+      <button class="nav-item" data-view="software">▦ <span>Kho phần mềm</span></button>
+      <button class="nav-item" data-view="categories">◈ <span>Danh mục</span></button>
+      <button class="nav-item" data-view="updates">↻ <span>Cập nhật</span></button>
+      <button class="nav-item" data-view="settings">⚙ <span>Cài đặt</span></button>
+    </nav>
+    <div class="side-footer">LOCAL • OFFLINE<br><small>Dữ liệu lưu trên máy</small></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button id="mobileMenu" class="icon-btn">☰</button>
+      <div class="crumb">Software Center / <b id="pageTitle">Tổng quan</b></div>
+      <div class="top-actions">
+        <button class="icon-btn" id="themeBtn" title="Đổi giao diện">◐</button>
+        <button class="admin-pill" id="adminBtn">⚡ Quản trị</button>
+      </div>
+    </header>
+
+    <section class="content">
+      <div id="dashboardView" class="view">
+        <div class="hero">
+          <div><span class="eyebrow">SOFTWARE MANAGEMENT PLATFORM</span><h1>Kho phần mềm<br><em>chuyên nghiệp.</em></h1>
+          <p>Quản lý, tìm kiếm và cập nhật phần mềm ngay trên máy tính. Không cần server, dữ liệu nằm trong thư mục local.</p>
+          <button class="primary" onclick="showView('software')">Mở kho phần mềm →</button></div>
+          <div class="hero-orb"><div class="orb-inner">S<span>H</span></div></div>
+        </div>
+        <div class="stats" id="stats"></div>
+        <div class="section-head"><div><span class="eyebrow">DISCOVER</span><h2>Phần mềm nổi bật</h2></div><button class="text-btn" onclick="showView('software')">Xem tất cả →</button></div>
+        <div class="software-grid" id="featured"></div>
+      </div>
+
+      <div id="softwareView" class="view hidden">
+        <div class="section-head"><div><span class="eyebrow">LIBRARY</span><h2>Kho phần mềm</h2><p class="muted">Tìm kiếm và quản lý toàn bộ phần mềm.</p></div><button class="primary small" id="addSoftwareBtn">＋ Thêm phần mềm</button></div>
+        <div class="filters"><div class="searchbox">⌕ <input id="search" placeholder="Tìm tên, nhà phát hành, mô tả..."></div><select id="categoryFilter"><option value="">Tất cả danh mục</option></select><select id="statusFilter"><option value="">Tất cả trạng thái</option><option>Ổn định</option><option>Mới</option><option>Đang cập nhật</option></select></div>
+        <div class="software-grid" id="softwareGrid"></div>
+      </div>
+
+      <div id="categoriesView" class="view hidden">
+        <div class="section-head"><div><span class="eyebrow">CATEGORIES</span><h2>Danh mục phần mềm</h2></div></div>
+        <div class="category-grid" id="categoryGrid"></div>
+      </div>
+
+      <div id="updatesView" class="view hidden">
+        <div class="section-head"><div><span class="eyebrow">RELEASES</span><h2>Lịch sử cập nhật</h2><p class="muted">Theo dõi phiên bản phần mềm trong kho local.</p></div></div>
+        <div class="updates-list" id="updatesList"></div>
+      </div>
+
+      <div id="settingsView" class="view hidden">
+        <div class="section-head"><div><span class="eyebrow">SYSTEM</span><h2>Cài đặt hệ thống</h2></div></div>
+        <div class="settings-card">
+          <h3>Dữ liệu</h3><p>Phần mềm được lưu bằng LocalStorage. Bạn có thể xuất toàn bộ dữ liệu thành JSON để sao lưu hoặc chuyển sang máy khác.</p>
+          <div class="setting-actions"><button class="primary" id="exportBtn">↓ Xuất dữ liệu JSON</button><label class="secondary file-btn">↑ Nhập dữ liệu JSON<input type="file" id="importFile" accept=".json"></label><button class="danger" id="resetBtn">↺ Khôi phục dữ liệu mẫu</button></div>
+        </div>
+        <div class="settings-card"><h3>Kiến trúc</h3><p><b>100% Local:</b> HTML + CSS + JavaScript, không framework bắt buộc. Có thể chạy trực tiếp bằng cách mở <code>index.html</code>.</p><p><b>Sẵn sàng nâng cấp:</b> có thể thay LocalStorage bằng PHP/MySQL, Node.js, API hoặc Google Sheets sau này mà không phải làm lại giao diện.</p></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="modal" class="modal hidden"><div class="modal-box"><button class="close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
